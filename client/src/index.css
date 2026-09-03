@@ -278,3 +278,45 @@ em { color: #b9d0b9; font-style: normal; }
 .admin-access-state p:not(.eyebrow) { color: #92928c; font-size: 13px; line-height: 1.6; margin: 22px 0 28px; }
 .loading-bar { animation: loading-pulse 1.1s ease-in-out infinite; background: #dfe8dd; display: block; height: 2px; margin-bottom: 19px; width: 90px; }
 @keyframes loading-pulse { 0%, 100% { opacity: .25; transform: scaleX(.35); } 50% { opacity: 1; transform: scaleX(1); } }
+
+.admin-subtitle { color: #777; display: block; font-size: 11px; margin-top: 10px; }
+.media-manager { margin-bottom: 16px; }
+.media-manager .admin-card-head > div > span { color: #777; display: block; font-size: 11px; margin-top: 8px; }
+.media-manager-grid { display: grid; gap: 18px; grid-template-columns: 1.4fr .8fr; margin-top: 25px; }
+.media-assets { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); }
+.media-asset, .media-add { background: #1d1d1d; border: 1px solid #2d2d2d; color: #eee; min-width: 0; padding: 0; text-align: left; }
+.media-asset.active { border-color: #afc4ae; box-shadow: inset 0 0 0 1px #afc4ae; }
+.media-asset img { aspect-ratio: 1.1; display: block; filter: grayscale(1); object-fit: cover; opacity: .78; width: 100%; }
+.media-asset.active img, .media-asset:hover img { filter: grayscale(.2); opacity: 1; }
+.media-asset span, .media-asset small { display: block; overflow: hidden; padding: 8px 9px 0; text-overflow: ellipsis; white-space: nowrap; }
+.media-asset small { color: #73736e; font-size: 8px; padding: 4px 9px 10px; }
+.media-add { align-items: center; border-style: dashed; display: flex; flex-direction: column; gap: 10px; justify-content: center; min-height: 150px; text-align: center; }
+.media-add span { font: 9px var(--mono); letter-spacing: .08em; }
+.media-preview { background: #202020; border: 1px solid #2d2d2d; padding: 12px; }
+.media-preview-image { aspect-ratio: 1.8; background: #111; overflow: hidden; }
+.media-preview-image img { height: 100%; object-fit: cover; width: 100%; }
+.media-preview-meta { align-items: start; display: flex; justify-content: space-between; padding: 17px 2px 14px; }
+.media-preview-meta h3 { font-size: 15px; margin: 4px 0; }
+.media-preview-meta span { color: #74746f; font-size: 10px; }
+.media-preview-meta button { background: transparent; color: #a66d6d; padding: 5px; }
+.admin-field { display: flex; flex-direction: column; gap: 8px; }
+.admin-field > span { color: #777; font: 9px var(--mono); letter-spacing: .1em; }
+.admin-field input, .admin-field textarea { background: #161616; border: 1px solid #363636; color: #eee; font-size: 12px; min-height: 40px; outline: 0; padding: 0 11px; width: 100%; }
+.admin-field textarea { min-height: 88px; padding-top: 11px; resize: vertical; }
+.admin-field input:focus, .admin-field textarea:focus { border-color: #adc3ad; }
+.product-list-head { align-items: end; }
+.product-list-head h2 span { color: #879d85; font-size: 12px; margin-left: 8px; }
+.admin-modal-backdrop { align-items: center; background: rgba(0,0,0,.76); display: flex; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 70; }
+.admin-product-editor { background: #1a1a1a; border: 1px solid #414141; max-height: 92vh; max-width: 900px; overflow-y: auto; padding: 28px; width: 100%; }
+.admin-product-editor > header { align-items: start; border-bottom: 1px solid #333; display: flex; justify-content: space-between; margin-bottom: 25px; padding-bottom: 18px; }
+.admin-product-editor > header h2 { font: 500 28px var(--display); letter-spacing: -.05em; margin: 5px 0 0; }
+.admin-product-editor > header button { background: transparent; color: #888; }
+.editor-layout { display: grid; gap: 28px; grid-template-columns: .85fr 1.15fr; }
+.editor-image { background: #111; min-height: 260px; position: relative; }
+.editor-image img { height: 100%; min-height: 260px; object-fit: cover; width: 100%; }
+.editor-image button { background: #dfe8dd; bottom: 12px; color: #111; font: 9px var(--mono); left: 12px; padding: 11px; position: absolute; }
+.editor-fields { display: flex; flex-direction: column; gap: 18px; }
+.editor-two { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.editor-check { align-items: center; color: #b9d0b9; display: flex; font: 10px var(--mono); gap: 8px; }
+.editor-save { align-self: flex-start; margin-top: 4px; }
+@media (max-width: 800px) { .media-manager-grid, .editor-layout { grid-template-columns: 1fr; }.media-assets { grid-template-columns: repeat(2, 1fr); }.product-list-head { align-items: start; flex-direction: column; gap: 16px; }.product-list-head .admin-search { max-width: none; width: 100%; } }
