@@ -1,5 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useAuth } from "./_core/hooks/useAuth";
+import { startLogin } from "./const";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { getProductBySlug, Product, products } from "./lib/mockServices";
@@ -51,9 +53,9 @@ export function AppShell() {
   return (
     <>
       <Switch>
-        <Route path="/admin/products"><AdminProductsPage setLocation={setLocation} /></Route>
-        <Route path="/admin/orders"><AdminOrdersPage setLocation={setLocation} /></Route>
-        <Route path="/admin"><AdminPage setLocation={setLocation} /></Route>
+        <Route path="/admin/products"><AdminGate><AdminProductsPage setLocation={setLocation} /></AdminGate></Route>
+        <Route path="/admin/orders"><AdminGate><AdminOrdersPage setLocation={setLocation} /></AdminGate></Route>
+        <Route path="/admin"><AdminGate><AdminPage setLocation={setLocation} /></AdminGate></Route>
         <Route path="/product/:slug">{({ slug }) => <ProductPage {...shared} product={getProductBySlug(slug) || products[0]} />}</Route>
         <Route path="/shop"><ShopPage {...shared} /></Route>
         <Route path="/new-arrivals"><ShopPage {...shared} newArrivals /></Route>
@@ -82,4 +84,13 @@ export default function App() {
       </ThemeProvider>
     </ErrorBoundary>
   );
+}
+
+
+function AdminGate({ children }: { children: React.ReactNode }) {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="admin-access-state"><span className="loading-bar" /><p>CHECKING ADMIN ACCESS</p></div>;
+  if (!user) return <div className="admin-access-state"><p className="eyebrow">AVIRO / STUDIO</p><h1>ADMIN ACCESS</h1><p>Sign in with your approved AVIRO account to continue.</p><button className="button button-light" onClick={() => startLogin()}>SIGN IN <span aria-hidden="true">→</span></button></div>;
+  if (user.role !== "admin") return <div className="admin-access-state"><p className="eyebrow">ACCESS RESTRICTED</p><h1>ADMIN ONLY.</h1><p>The account {user.email || "currently signed in"} does not have admin permissions.</p></div>;
+  return <>{children}</>;
 }
