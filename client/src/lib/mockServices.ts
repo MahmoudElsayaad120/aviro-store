@@ -8,6 +8,7 @@ export type Product = {
   price: number;
   compareAtPrice?: number;
   image: string;
+  gallery?: string[];
   alt: string;
   description: string;
   details: { label: string; value: string }[];
